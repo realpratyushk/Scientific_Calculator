@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============================================
+         SCIENTIFIC CALCULATOR - APPLE SKEUOMORPHIC
+         ============================================ -->
+
+    <div class="calculator" id="calculator">
+
+        <!-- Header with Title & Toggles -->
+        <div class="calc-header">
+            <span class="calc-title">Scientific Calculator</span>
+            <div class="toggles">
+                <button class="toggle-btn" id="soundToggle" title="Toggle Sound">
+                    <span class="toggle-icon">🔇</span>
+                </button>
+                <button class="toggle-btn" id="darkModeToggle" title="Toggle Dark Mode">
+                    <span class="toggle-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- LCD Display Screen -->
+        <div class="display" id="display">
+            <div class="expression" id="expression"></div>
+            <div class="result" id="result">0</div>
+            <!-- Mode indicator (DEG) -->
+            <div class="mode-indicator" id="modeIndicator">DEG</div>
+        </div>
+
+        <!-- Button Grid: 4 columns, 9 rows -->
+        <div class="button-grid">
+
+            <!-- ── Row 1: Trigonometric + Log ── -->
+            <button class="btn sci" data-action="func" data-value="sin(">sin</button>
+            <button class="btn sci" data-action="func" data-value="cos(">cos</button>
+            <button class="btn sci" data-action="func" data-value="tan(">tan</button>
+            <button class="btn sci" data-action="func" data-value="log(">log</button>
+
+            <!-- ── Row 2: Natural Log + Root + Powers ── -->
+            <button class="btn sci" data-action="func" data-value="ln(">ln</button>
+            <button class="btn sci" data-action="func" data-value="sqrt(">√</button>
+            <button class="btn sci" data-action="append" data-value="^2">x²</button>
+            <button class="btn sci" data-action="append" data-value="^">xʸ</button>
+
+            <!-- ── Row 3: Factorial + Constants + Percent ── -->
+            <button class="btn sci" data-action="append" data-value="!">n!</button>
+            <button class="btn sci" data-action="append" data-value="π">π</button>
+            <button class="btn sci" data-action="append" data-value="ℯ">e</button>
+            <button class="btn sci" data-action="append" data-value="%">%</button>
+
+            <!-- ── Row 4: Clear + Backspace + Parens ── -->
+            <button class="btn func" data-action="clear">C</button>
+            <button class="btn func" data-action="backspace">⌫</button>
+            <button class="btn func" data-action="append" data-value="(">(</button>
+            <button class="btn func" data-action="append" data-value=")">)</button>
+
+            <!-- ── Row 5: 7 8 9 ÷ ── -->
+            <button class="btn num" data-action="append" data-value="7">7</button>
+            <button class="btn num" data-action="append" data-value="8">8</button>
+            <button class="btn num" data-action="append" data-value="9">9</button>
+            <button class="btn op" data-action="append" data-value="÷">÷</button>
+
+            <!-- ── Row 6: 4 5 6 × ── -->
+            <button class="btn num" data-action="append" data-value="4">4</button>
+            <button class="btn num" data-action="append" data-value="5">5</button>
+            <button class="btn num" data-action="append" data-value="6">6</button>
+            <button class="btn op" data-action="append" data-value="×">×</button>
+
+            <!-- ── Row 7: 1 2 3 − ── -->
+            <button class="btn num" data-action="append" data-value="1">1</button>
+            <button class="btn num" data-action="append" data-value="2">2</button>
+            <button class="btn num" data-action="append" data-value="3">3</button>
+            <button class="btn op" data-action="append" data-value="−">−</button>
+
+            <!-- ── Row 8: 0 (span 2) . + ── -->
+            <button class="btn num zero" data-action="append" data-value="0">0</button>
+            <button class="btn num" data-action="append" data-value=".">.</button>
+            <button class="btn op" data-action="append" data-value="+">+</button>
+
+            <!-- ── Row 9: = (span 4) ── -->
+            <button class="btn equals" data-action="equals">=</button>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

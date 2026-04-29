@@ -1,0 +1,740 @@
+/* ============================================
+   SCIENTIFIC CALCULATOR - SKEUOMORPHIC CSS
+   Premium Apple-style Design
+   ============================================ */
+
+/* ── CSS Custom Properties (Light Theme) ── */
+:root {
+    /* Body */
+    --body-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    /* Calculator Body */
+    --calc-bg: linear-gradient(160deg, #e8e8e8 0%, #d4d4d4 40%, #c8c8c8 100%);
+    --calc-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.4);
+    --calc-border: 1px solid #b8b8b8;
+    --calc-inner-highlight: inset 0 2px 0 rgba(255, 255, 255, 0.7);
+
+    /* Display */
+    --display-bg: linear-gradient(180deg, #1a1a2e 0%, #0d0d1a 100%);
+    --display-shadow: 
+        inset 0 5px 18px rgba(0, 0, 0, 0.55),
+        inset 0 -3px 10px rgba(255, 255, 255, 0.03),
+        0 1px 0 rgba(255, 255, 255, 0.15);
+    --display-border: 2px solid #2a2a3e;
+    --display-text-color: #00e676;
+    --display-expr-color: rgba(128, 203, 196, 0.8);
+    --display-mode-color: rgba(128, 203, 196, 0.4);
+
+    /* Number Buttons */
+    --btn-num-bg: linear-gradient(160deg, #f8f8f8 0%, #e0e0e0 100%);
+    --btn-num-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.12),
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    --btn-num-active-shadow: 
+        inset 0 2px 6px rgba(0, 0, 0, 0.25),
+        inset 0 -1px 2px rgba(255, 255, 255, 0.1);
+    --btn-num-color: #333;
+    --btn-num-hover: linear-gradient(160deg, #ffffff 0%, #eaeaea 100%);
+
+    /* Operator Buttons */
+    --btn-op-bg: linear-gradient(160deg, #c2d9f7 0%, #8ab4f8 100%);
+    --btn-op-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.12),
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    --btn-op-active-shadow: 
+        inset 0 2px 6px rgba(0, 0, 0, 0.25),
+        inset 0 -1px 2px rgba(255, 255, 255, 0.1);
+    --btn-op-color: #1a3a6a;
+    --btn-op-hover: linear-gradient(160deg, #d4e5ff 0%, #9cc4ff 100%);
+
+    /* Scientific Buttons */
+    --btn-sci-bg: linear-gradient(160deg, #e8e8e8 0%, #cfcfcf 100%);
+    --btn-sci-shadow: 
+        0 3px 6px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --btn-sci-active-shadow: 
+        inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    --btn-sci-color: #555;
+    --btn-sci-hover: linear-gradient(160deg, #f0f0f0 0%, #d8d8d8 100%);
+
+    /* Function Buttons (C, ⌫) */
+    --btn-func-bg: linear-gradient(160deg, #ffe4bc 0%, #f5c67a 100%);
+    --btn-func-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    --btn-func-active-shadow: 
+        inset 0 2px 6px rgba(0, 0, 0, 0.2);
+    --btn-func-color: #6a4a10;
+    --btn-func-hover: linear-gradient(160deg, #fff0d4 0%, #ffd48a 100%);
+
+    /* Equals Button */
+    --btn-eq-bg: linear-gradient(160deg, #ffb347 0%, #ff8c00 100%);
+    --btn-eq-shadow: 
+        0 4px 12px rgba(255, 140, 0, 0.3),
+        0 2px 4px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    --btn-eq-active-shadow: 
+        inset 0 2px 8px rgba(0, 0, 0, 0.3);
+    --btn-eq-color: #fff;
+    --btn-eq-hover: linear-gradient(160deg, #ffc469 0%, #ffa020 100%);
+
+    /* Header */
+    --header-color: #888;
+    --toggle-bg: rgba(0, 0, 0, 0.06);
+    --toggle-hover-bg: rgba(0, 0, 0, 0.12);
+}
+
+/* ── Dark Theme Overrides ── */
+body.dark {
+    --body-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+
+    --calc-bg: linear-gradient(160deg, #2e2e42 0%, #22223a 40%, #1c1c32 100%);
+    --calc-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
+    --calc-border: 1px solid #444460;
+    --calc-inner-highlight: inset 0 2px 0 rgba(255, 255, 255, 0.08);
+
+    --display-bg: linear-gradient(180deg, #0a0a18 0%, #050510 100%);
+    --display-shadow: 
+        inset 0 5px 18px rgba(0, 0, 0, 0.7),
+        inset 0 -3px 10px rgba(255, 255, 255, 0.02),
+        0 1px 0 rgba(255, 255, 255, 0.05);
+    --display-border: 2px solid #1a1a30;
+
+    --btn-num-bg: linear-gradient(160deg, #3a3a50 0%, #2a2a40 100%);
+    --btn-num-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --btn-num-active-shadow: 
+        inset 0 2px 6px rgba(0, 0, 0, 0.5);
+    --btn-num-color: #ddd;
+    --btn-num-hover: linear-gradient(160deg, #444458 0%, #33334a 100%);
+
+    --btn-op-bg: linear-gradient(160deg, #2a4a80 0%, #1a3a68 100%);
+    --btn-op-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    --btn-op-active-shadow: 
+        inset 0 2px 6px rgba(0, 0, 0, 0.5);
+    --btn-op-color: #a0c4ff;
+    --btn-op-hover: linear-gradient(160deg, #345890 0%, #224878 100%);
+
+    --btn-sci-bg: linear-gradient(160deg, #353550 0%, #282840 100%);
+    --btn-sci-shadow: 
+        0 3px 6px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    --btn-sci-active-shadow: 
+        inset 0 2px 5px rgba(0, 0, 0, 0.4);
+    --btn-sci-color: #aaa;
+    --btn-sci-hover: linear-gradient(160deg, #3e3e58 0%, #303048 100%);
+
+    --btn-func-bg: linear-gradient(160deg, #5a4820 0%, #4a3818 100%);
+    --btn-func-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --btn-func-active-shadow: 
+        inset 0 2px 6px rgba(0, 0, 0, 0.5);
+    --btn-func-color: #ffd080;
+    --btn-func-hover: linear-gradient(160deg, #6a5828 0%, #5a4820 100%);
+
+    --btn-eq-bg: linear-gradient(160deg, #e08020 0%, #c06800 100%);
+    --btn-eq-shadow: 
+        0 4px 12px rgba(200, 100, 0, 0.25),
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    --btn-eq-active-shadow: 
+        inset 0 2px 8px rgba(0, 0, 0, 0.5);
+    --btn-eq-color: #fff;
+    --btn-eq-hover: linear-gradient(160deg, #f09030 0%, #d07810 100%);
+
+    --header-color: #777;
+    --toggle-bg: rgba(255, 255, 255, 0.08);
+    --toggle-hover-bg: rgba(255, 255, 255, 0.15);
+}
+
+
+/* ─────────────────────────────────────────────
+   GLOBAL RESET & BASE
+   ───────────────────────────────────────────── */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--body-bg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    padding: 20px;
+    transition: background 0.4s ease;
+}
+
+
+/* ─────────────────────────────────────────────
+   CALCULATOR BODY
+   ───────────────────────────────────────────── */
+
+.calculator {
+    width: 100%;
+    max-width: 380px;
+    background: var(--calc-bg);
+    border-radius: 32px;
+    padding: 20px;
+    border: var(--calc-border);
+    box-shadow: var(--calc-shadow), var(--calc-inner-highlight);
+    position: relative;
+    transition: all 0.4s ease;
+    /* Prevent text selection on buttons */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Metallic top highlight strip */
+.calculator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 30px;
+    right: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+    border-radius: 50%;
+    z-index: 1;
+    transition: background 0.4s ease;
+}
+
+body.dark .calculator::before {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+/* Subtle bottom reflection */
+.calculator::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    right: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+    border-radius: 50%;
+}
+
+
+/* ─────────────────────────────────────────────
+   CALCULATOR HEADER
+   ───────────────────────────────────────────── */
+
+.calc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 0 5px;
+}
+
+.calc-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--header-color);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.4s ease;
+}
+
+.toggles {
+    display: flex;
+    gap: 6px;
+}
+
+.toggle-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: var(--toggle-bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.toggle-btn:hover {
+    background: var(--toggle-hover-bg);
+    transform: scale(1.05);
+}
+
+.toggle-btn:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-icon {
+    font-size: 15px;
+    line-height: 1;
+}
+
+
+/* ─────────────────────────────────────────────
+   LCD DISPLAY SCREEN
+   ───────────────────────────────────────────── */
+
+.display {
+    background: var(--display-bg);
+    border-radius: 16px;
+    padding: 18px 20px 16px;
+    margin-bottom: 16px;
+    box-shadow: var(--display-shadow);
+    border: var(--display-border);
+    position: relative;
+    overflow: hidden;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: all 0.4s ease;
+}
+
+/* LCD scanline effect */
+.display::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.025) 2px,
+        rgba(0, 0, 0, 0.025) 4px
+    );
+    pointer-events: none;
+    border-radius: 16px;
+}
+
+/* Expression line (top, smaller) */
+.expression {
+    font-family: 'SF Mono', 'Menlo', 'Consolas', 'Courier New', monospace;
+    font-size: 16px;
+    color: var(--display-expr-color);
+    text-align: right;
+    min-height: 22px;
+    word-wrap: break-word;
+    line-height: 1.4;
+    transition: color 0.4s ease, font-size 0.2s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Result line (bottom, larger) */
+.result {
+    font-family: 'SF Mono', 'Menlo', 'Consolas', 'Courier New', monospace;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--display-text-color);
+    text-align: right;
+    line-height: 1.2;
+    margin-top: 4px;
+    word-wrap: break-word;
+    transition: color 0.4s ease, font-size 0.2s ease;
+    position: relative;
+    z-index: 1;
+    /* Text glow effect */
+    text-shadow: 0 0 12px rgba(0, 230, 118, 0.25);
+}
+
+body.dark .result {
+    text-shadow: 0 0 18px rgba(0, 230, 118, 0.35);
+}
+
+/* Result when showing error */
+.result.error {
+    color: #ff5252;
+    text-shadow: 0 0 12px rgba(255, 82, 82, 0.3);
+    font-size: 26px;
+}
+
+/* Result when it's a live preview */
+.result.preview {
+    opacity: 0.5;
+}
+
+/* Mode indicator (DEG/RAD) */
+.mode-indicator {
+    position: absolute;
+    top: 8px;
+    left: 14px;
+    font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+    font-size: 9px;
+    color: var(--display-mode-color);
+    letter-spacing: 1px;
+    font-weight: 600;
+    z-index: 2;
+}
+
+
+/* ─────────────────────────────────────────────
+   BUTTON GRID
+   ───────────────────────────────────────────── */
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+
+/* ─────────────────────────────────────────────
+   BASE BUTTON STYLES
+   ───────────────────────────────────────────── */
+
+.btn {
+    height: 52px;
+    border: none;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.18s ease;
+    outline: none;
+
+    /* Remove default tap highlight on mobile */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Subtle highlight on top of every button */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%);
+    border-radius: 14px 14px 50% 50%;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+}
+
+/* Focus outline for accessibility */
+.btn:focus-visible {
+    outline: 2px solid #4a90d9;
+    outline-offset: 2px;
+}
+
+
+/* ── Number Buttons ── */
+.btn.num {
+    background: var(--btn-num-bg);
+    color: var(--btn-num-color);
+    box-shadow: var(--btn-num-shadow);
+}
+
+.btn.num:hover {
+    background: var(--btn-num-hover);
+}
+
+.btn.num:active {
+    box-shadow: var(--btn-num-active-shadow);
+    transform: translateY(1px);
+}
+
+.btn.num:active::before {
+    opacity: 0;
+}
+
+
+/* ── Zero Button (spans 2 columns) ── */
+.btn.zero {
+    grid-column: span 2;
+}
+
+
+/* ── Operator Buttons ── */
+.btn.op {
+    background: var(--btn-op-bg);
+    color: var(--btn-op-color);
+    box-shadow: var(--btn-op-shadow);
+    font-weight: 600;
+}
+
+.btn.op:hover {
+    background: var(--btn-op-hover);
+}
+
+.btn.op:active {
+    box-shadow: var(--btn-op-active-shadow);
+    transform: translateY(1px);
+}
+
+.btn.op:active::before {
+    opacity: 0;
+}
+
+
+/* ── Scientific Function Buttons ── */
+.btn.sci {
+    background: var(--btn-sci-bg);
+    color: var(--btn-sci-color);
+    box-shadow: var(--btn-sci-shadow);
+    font-size: 15px;
+    height: 46px;
+    border-radius: 12px;
+}
+
+.btn.sci:hover {
+    background: var(--btn-sci-hover);
+}
+
+.btn.sci:active {
+    box-shadow: var(--btn-sci-active-shadow);
+    transform: translateY(1px);
+}
+
+.btn.sci:active::before {
+    opacity: 0;
+}
+
+
+/* ── Function Buttons (C, ⌫) ── */
+.btn.func {
+    background: var(--btn-func-bg);
+    color: var(--btn-func-color);
+    box-shadow: var(--btn-func-shadow);
+    font-weight: 600;
+}
+
+.btn.func:hover {
+    background: var(--btn-func-hover);
+}
+
+.btn.func:active {
+    box-shadow: var(--btn-func-active-shadow);
+    transform: translateY(1px);
+}
+
+.btn.func:active::before {
+    opacity: 0;
+}
+
+
+/* ── Equals Button ── */
+.btn.equals {
+    grid-column: span 4;
+    background: var(--btn-eq-bg);
+    color: var(--btn-eq-color);
+    box-shadow: var(--btn-eq-shadow);
+    font-size: 22px;
+    font-weight: 700;
+    height: 52px;
+    letter-spacing: 2px;
+}
+
+.btn.equals:hover {
+    background: var(--btn-eq-hover);
+}
+
+.btn.equals:active {
+    box-shadow: var(--btn-eq-active-shadow);
+    transform: translateY(1px);
+}
+
+.btn.equals:active::before {
+    opacity: 0;
+}
+
+
+/* ─────────────────────────────────────────────
+   BUTTON PRESS ANIMATION
+   ───────────────────────────────────────────── */
+
+@keyframes btnPress {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(0.95) translateY(1px); }
+    100% { transform: scale(1); }
+}
+
+.btn.pressing {
+    animation: btnPress 0.15s ease;
+}
+
+
+/* ─────────────────────────────────────────────
+   RESULT FLASH ANIMATION
+   ───────────────────────────────────────────── */
+
+@keyframes resultFlash {
+    0%   { text-shadow: 0 0 12px rgba(0, 230, 118, 0.25); }
+    50%  { text-shadow: 0 0 30px rgba(0, 230, 118, 0.6); }
+    100% { text-shadow: 0 0 12px rgba(0, 230, 118, 0.25); }
+}
+
+.result.flash {
+    animation: resultFlash 0.4s ease;
+}
+
+
+/* ─────────────────────────────────────────────
+   ERROR SHAKE ANIMATION
+   ───────────────────────────────────────────── */
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%      { transform: translateX(-6px); }
+    40%      { transform: translateX(6px); }
+    60%      { transform: translateX(-4px); }
+    80%      { transform: translateX(4px); }
+}
+
+.display.shake {
+    animation: shake 0.35s ease;
+}
+
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE DESIGN
+   ───────────────────────────────────────────── */
+
+/* Large phones */
+@media (max-width: 420px) {
+    .calculator {
+        max-width: 340px;
+        padding: 16px;
+        border-radius: 28px;
+    }
+
+    .display {
+        padding: 14px 16px 12px;
+        min-height: 90px;
+        border-radius: 14px;
+    }
+
+    .result {
+        font-size: 34px;
+    }
+
+    .expression {
+        font-size: 14px;
+    }
+
+    .btn {
+        height: 48px;
+        font-size: 17px;
+        border-radius: 12px;
+    }
+
+    .btn.sci {
+        height: 42px;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .btn.equals {
+        height: 48px;
+        font-size: 20px;
+    }
+
+    .button-grid {
+        gap: 8px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 350px) {
+    body {
+        padding: 10px;
+    }
+
+    .calculator {
+        max-width: 300px;
+        padding: 12px;
+        border-radius: 24px;
+    }
+
+    .display {
+        min-height: 80px;
+        padding: 12px 14px 10px;
+    }
+
+    .result {
+        font-size: 28px;
+    }
+
+    .expression {
+        font-size: 13px;
+    }
+
+    .btn {
+        height: 42px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+
+    .btn.sci {
+        height: 38px;
+        font-size: 13px;
+    }
+
+    .btn.equals {
+        height: 42px;
+        font-size: 18px;
+    }
+
+    .button-grid {
+        gap: 6px;
+    }
+}
+
+/* Tablets and larger */
+@media (min-width: 768px) {
+    .calculator {
+        max-width: 400px;
+        padding: 24px;
+    }
+
+    .display {
+        min-height: 110px;
+    }
+
+    .btn {
+        height: 56px;
+        font-size: 19px;
+    }
+
+    .btn.sci {
+        height: 48px;
+        font-size: 16px;
+    }
+
+    .btn.equals {
+        height: 56px;
+        font-size: 24px;
+    }
+
+    .button-grid {
+        gap: 12px;
+    }
+}
