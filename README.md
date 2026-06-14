@@ -1,6 +1,6 @@
 # 🧮 CalcMatrix - Scientific Calculator Web App
 
-🔗 Live Demo: https://calcmatrix.netlify.app/
+🔗 Live Demo: https://calccube.netlify.app/
 
 CalcMatrix is a modern **scientific calculator web application** built using **HTML, CSS, and JavaScript**. It features a clean **skeuomorphic UI design** with realistic 3D buttons and supports both basic and advanced mathematical operations.
 
